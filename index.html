@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PI. Aplicación web dinámica en un servicio de la nube</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+
+    <header class="header">
+      <a href="index.html" class="logo">Dat-OS</a>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  
+      <ul class="menu">
+        <li><a href="index.html">DATABASE</a></li>
+        <li><a href="video.html">VIDEO</a></li>
+      </ul>
+    </header>
+
+    <style>
+      body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #cfcfcf;
+    }
+    
+    /* header */
+    
+    .header11 {
+    background-color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 4px 0 rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    }
+    
+    .header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    }
+    
+    .header li a {
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: #fff;
+    }
+    
+    
+    .header .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    }
+    
+    /* menu */
+    
+    .header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+    }
+    
+    /* icono */
+    
+    .header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    }
+    
+    .header .menu-icon .navicon {
+    background: #fff;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+    }
+    
+    .header .menu-icon .navicon:before,
+    .header .menu-icon .navicon:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+    }
+    
+    .header .menu-icon .navicon:before {
+    top: 5px;
+    }
+    
+    .header .menu-icon .navicon:after {
+    top: -5px;
+    }
+    
+    /* boton */
+    
+    .header .menu-btn {
+    display: none;
+    }
+    
+    .header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+    }
+    
+    .header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+    }
+    
+    .header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+    }
+    
+    .header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+    }
+    
+    .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+    .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+    }
+    
+    
+    @media (min-width: 800px) {
+    .header li {
+    float: left;
+    }
+    .header li a {
+    padding: 20px 30px;
+    }
+    .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+    }
+    .header .menu-icon {
+    display: none;
+    }
+    }
+    </style>
+<br><br><br>
+    <div class="container p-4">
+      <h1>REGISTRO</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="h4">DATABASE</h1>
+              <form action="" id="client-form">
+                <label for="name">Nombre:</label>
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  placeholder="Nombre"
+                  id="client-name"
+                />
+                <label for="addres">Dirección:</label>
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  placeholder="Dirección"
+                  id="client-adress"
+                />
+                <label for="phone">Telefono:</label>
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  placeholder="Telefono"
+                  id="client-phone"
+                />
+                <label for="email">Correo:</label>
+                <input
+                  class="form-control mb-3"
+                  type="email"
+                  placeholder="Correo"
+                  id="client-email"
+                />
+                <label for="coments">Más Detalles</label>
+                <textarea
+                  class="form-control mb-3"
+                  id="client-description"
+                  rows="3"
+                  placeholder="Comentarios"
+                ></textarea>
+                <button id="btn-client-save" class="btn btn-success">
+                  Guardar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" id="client-container"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+    <section class="">
+      <!-- Footer -->
+      <footer class="text-center text-white" style="background-color: #0a4275;">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: CTA -->
+          <section class="">
+            <p class="d-flex justify-content-center align-items-center">
+              <span class="me-3">Registrate Gratis</span>
+              <button type="button" class="btn btn-outline-light btn-rounded">
+                Da clic!
+              </button>
+            </p>
+          </section>
+          <!-- Section: CTA -->
+        </div>
+        <!-- Grid container -->
+        <span class="me-3">ALUMNO:MARIANA GOMEZ ESTRADA </span><br>
+        <span class="me-3">MATERIA: Conceptualización de servicios en la nube</span><br>
+        <span class="me-3">ACTIVIDAD: PI. Aplicación web dinámica en un servicio de la nube</span><br>
+         
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2024 Copyright:
+          <a class="text-white" href="https://www.udgvirtual.udg.mx/">UDGV</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </section>
+  </body>
+</html>
